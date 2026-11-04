@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Fuzzy-pick a project directory and switch to (or create) a tmux session for it.
+#   tmux-sessionizer            # pick with fzf
+#   tmux-sessionizer ~/ptc      # open directly
+# Inside tmux: prefix f.   Search roots: $TS_SEARCH_PATHS (default: ~ one level deep).
+set -euo pipefail
+
+if [[ $# -eq 1 ]]; then
+  dir=$(realpath "$1")
+else
+  read -ra roots <<<"${TS_SEARCH_PATHS:-$HOME}"
+  dir=$(find "${roots[@]}" -mindepth 1 -maxdepth 1 -type d -not -name '.*' 2>/dev/null |
+    sort | fzf --prompt 'project> ' --height 100% --reverse) || exit 0
+fi
+
+name=$(basename "$dir" | tr '.:' '__')
+
+if ! tmux has-session -t "=$name" 2>/dev/null; then
+  # window 1: editor, window 2: shell
+  tmux new-session -ds "$name" -c "$dir" -n edit
+  tmux send-keys -t "$name:edit" "nvim ." C-m
+  tmux new-window -dt "$name:" -c "$dir" -n shell
+fi
+
+if [[ -n "${TMUX:-}" ]]; then
+  tmux switch-client -t "$name"
+else
+  tmux attach -t "$name"
+fi

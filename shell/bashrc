@@ -1,0 +1,17 @@
+# Sourced from ~/.bashrc (line added by install.sh)
+
+case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) export PATH="$HOME/.local/bin:$PATH" ;; esac
+
+export EDITOR=nvim
+export VISUAL=nvim
+
+# fzf: Ctrl-R history search, Ctrl-T file picker, Alt-C cd into dir
+if command -v fzf >/dev/null; then
+  eval "$(fzf --bash)"
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
+
+alias v=nvim
+alias lg=lazygit
+alias t=tmux-sessionizer   # pick a project -> tmux session
