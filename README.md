@@ -1,6 +1,6 @@
 # dotfiles
 
-Neovim + tmux dev setup for Go, Terraform, Ansible, YAML and Bash.
+Neovim + tmux dev setup.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/alik-r/dotfiles/main/install.sh | bash
@@ -28,7 +28,7 @@ See [QUICKSTART.md](QUICKSTART.md) for daily usage.
 | Path | Linked to | What |
 |---|---|---|
 | `nvim/` | `~/.config/nvim` | [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) (base commit `8e35dbe`) + changes marked `[dotfiles]` |
-| `nvim/lua/custom/` | | my additions: tmux navigation, lazygit, Ansible filetypes, OSC 52 clipboard, installer bootstrap |
+| `nvim/lua/custom/` | | custom additions: tmux navigation, lazygit, Ansible filetypes, OSC 52 clipboard, installer bootstrap |
 | `nvim/nvim-pack-lock.json` | | pinned plugin versions (commit it) |
 | `tmux/tmux.conf` | `~/.config/tmux/tmux.conf` | prefix `Ctrl+a` |
 | `bin/tmux-sessionizer` | `~/.local/bin/` | fuzzy project → tmux session |
@@ -88,8 +88,6 @@ Leader is `Space`. Press it and wait: which-key shows everything.
 | GitLens blame | `Space h b` line, `Space g b` file, `Space t b` inline toggle |
 | Next/prev change | `]c` / `[c`; stage/reset hunk `Space h s` / `Space h r`; preview `Space h p` |
 | Command palette | `Space s c`; all keymaps `Space s k` |
-
-New to Vim motions? Run `:Tutor` once.
 
 ## Notes
 

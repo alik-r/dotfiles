@@ -11,8 +11,7 @@ which are installed with apt if missing. Safe to re-run.
 
 **First time on a server:**
 ```bash
-git config --global core.editor nvim   # optional: commit messages open in nvim instead of vim
-exec bash                              # load aliases and PATH
+exec bash    # load aliases and PATH
 ```
 
 **Font (on the machine your terminal runs on, e.g. WSL):**
@@ -24,7 +23,6 @@ Then restart Windows Terminal.
 ## Daily use
 
 ```bash
-ssh <server>
 t                     # pick a project -> session with nvim and a shell window
 ```
 After a disconnect: `tmux attach`.
@@ -58,7 +56,7 @@ After a disconnect: `tmux attach`.
 | lazygit / blame line / next change | `Space g g` / `Space h b` / `]c` |
 | Save / quit | `:w` / `:q` |
 
-New to Vim? Run `:Tutor` once. Full VS Code → Neovim key mapping: [README.md](README.md#cheatsheet).
+Full VS Code → Neovim key mapping: [README.md](README.md#cheatsheet).
 
 ## Maintenance
 
