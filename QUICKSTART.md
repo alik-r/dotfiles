@@ -34,6 +34,7 @@ After a disconnect: `tmux attach`.
 | Keys | Action |
 |---|---|
 | `prefix f` | switch or create a project session |
+| `prefix S` | new plain shell session (asks for a name) |
 | `prefix s` | list sessions |
 | `prefix c` / `prefix 1-9` | new window / go to window |
 | `prefix \|` / `prefix -` | split side by side / top and bottom |

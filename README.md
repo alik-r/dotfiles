@@ -53,6 +53,7 @@ Leader is `Space`. Press it and wait: which-key shows everything.
 | Keys | Action |
 |---|---|
 | `prefix f` | jump to/create project session |
+| `prefix S` | new plain shell session (asks for a name) |
 | `prefix s` | list sessions |
 | `prefix c` / `prefix 1..9` | new window / go to window |
 | `prefix \|` / `prefix -` | split vertical / horizontal |
