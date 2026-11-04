@@ -21,6 +21,8 @@ installs them with `apt` (asks for sudo). Re-running is safe; bump versions at t
 - **SSH server**: skipped. On the machine you SSH from, run `install.sh --font-only`
   (or `curl -fsSL .../install.sh | bash -s -- --font-only`).
 
+See [QUICKSTART.md](QUICKSTART.md) for daily usage.
+
 ## Layout
 
 | Path | Linked to | What |
