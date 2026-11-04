@@ -428,19 +428,14 @@ do
   -- change the command under that to load whatever the name of that colorscheme is.
   --
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-  vim.pack.add { gh 'rebelot/kanagawa.nvim' }
-  require('kanagawa').setup {
-    commentStyle = { italic = false },
-    keywordStyle = { italic = false },
-    overrides = function()
-      return {
-        ['@variable.builtin'] = { italic = false }, -- self, this
-      }
-    end,
-  }
+  vim.pack.add { gh 'sainnhe/gruvbox-material' }
+  vim.g.gruvbox_material_enable_italic = 0
+  vim.g.gruvbox_material_disable_italic_comment = 1
 
-  -- Load the colorscheme here. Other variants: 'kanagawa-wave', 'kanagawa-lotus'.
-  vim.cmd.colorscheme 'kanagawa-dragon'
+  -- Load the colorscheme here. Options must be set before this line.
+  -- `vim.g.gruvbox_material_background` can be 'hard', 'medium' (default) or 'soft'.
+  vim.o.background = 'dark'
+  vim.cmd.colorscheme 'gruvbox-material'
 
   -- Highlight todo, notes, etc in comments
   vim.pack.add { gh 'folke/todo-comments.nvim' }
