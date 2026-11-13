@@ -15,3 +15,4 @@ fi
 alias v=nvim
 alias lg=lazygit
 alias t=tmux-sessionizer   # pick a project -> tmux session
+command -v bat >/dev/null && alias cat='bat --paging never'   # plain cat: \cat

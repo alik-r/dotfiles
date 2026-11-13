@@ -34,7 +34,8 @@ See [QUICKSTART.md](QUICKSTART.md) for daily usage.
 | `bin/tmux-sessionizer` | `~/.local/bin/` | fuzzy project → tmux session |
 | `shell/bashrc` | sourced from `~/.bashrc` | PATH, `EDITOR=nvim`, fzf keys, aliases |
 
-Installed tools: nvim, ripgrep, fd, fzf, lazygit, tree-sitter CLI.
+Installed tools: nvim, ripgrep, fd, fzf, lazygit, tree-sitter CLI, Node.js (npm, for Mason), bat
+(`cat` is aliased to `bat --paging never`; `\cat` for the real one).
 LSPs/formatters via Mason (`:Mason`): gopls, terraformls, yamlls (+SchemaStore), ansiblels
 (+ansible-lint, ansible-core), bashls (+shellcheck), lua_ls, goimports, shfmt, stylua.
 

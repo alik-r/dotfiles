@@ -22,6 +22,8 @@ FD_VERSION=10.5.0
 FZF_VERSION=0.74.5
 LAZYGIT_VERSION=0.66.2
 TREESITTER_VERSION=0.27.1
+NODE_VERSION=26.13.1 # LTS; Mason needs npm for yamlls, bashls, ansiblels
+BAT_VERSION=0.26.1
 
 BIN="$HOME/.local/bin"
 OPT="$HOME/.local/opt"
@@ -123,6 +125,26 @@ if [[ "$(tree-sitter --version 2>/dev/null)" != "tree-sitter $TREESITTER_VERSION
   fetch "https://github.com/tree-sitter/tree-sitter/releases/download/v$TREESITTER_VERSION/tree-sitter-linux-$a.gz" "$TMP/ts.gz"
   gunzip -c "$TMP/ts.gz" >"$TMP/tree-sitter"
   install -m 755 "$TMP/tree-sitter" "$BIN/tree-sitter"
+fi
+
+# Node.js (npm: Mason installs yaml-, bash- and ansible-language-server with it)
+if [[ "$(node --version 2>/dev/null)" != "v$NODE_VERSION" ]]; then
+  info "Installing Node.js $NODE_VERSION"
+  a=$([[ $ARCH == arm64 ]] && echo arm64 || echo x64)
+  fetch "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$a.tar.gz" "$TMP/node.tgz"
+  rm -rf "$OPT/node"
+  mkdir -p "$OPT/node"
+  tar -xzf "$TMP/node.tgz" -C "$OPT/node" --strip-components=1
+  for b in node npm npx; do ln -sfn "$OPT/node/bin/$b" "$BIN/$b"; done
+fi
+
+# bat (cat with syntax highlighting)
+if [[ "$(bat --version 2>/dev/null)" != "bat $BAT_VERSION"* ]]; then
+  info "Installing bat $BAT_VERSION"
+  a=$([[ $ARCH == arm64 ]] && echo aarch64 || echo x86_64)
+  fetch "https://github.com/sharkdp/bat/releases/download/v$BAT_VERSION/bat-v$BAT_VERSION-$a-unknown-linux-musl.tar.gz" "$TMP/bat.tgz"
+  tar -xzf "$TMP/bat.tgz" -C "$TMP"
+  install -m 755 "$TMP/bat-v$BAT_VERSION-$a-unknown-linux-musl/bat" "$BIN/bat"
 fi
 
 # --- symlink configs ----------------------------------------------------------
