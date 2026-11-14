@@ -21,8 +21,6 @@ installs them with `apt` (asks for sudo). Re-running is safe; bump versions at t
 - **SSH server**: skipped. On the machine you SSH from, run `install.sh --font-only`
   (or `curl -fsSL .../install.sh | bash -s -- --font-only`).
 
-See [QUICKSTART.md](QUICKSTART.md) for daily usage.
-
 ## Layout
 
 | Path | Linked to | What |
@@ -42,53 +40,10 @@ LSPs/formatters via Mason (`:Mason`): gopls, terraformls, yamlls (+SchemaStore),
 ## Workflow
 
 One tmux session per project: `t` (or `prefix f` inside tmux) → pick a dir under `~` →
-session with window 1 `nvim .` and window 2 a shell. Sessions survive SSH disconnects:
-`tmux attach`.
+session with window 1 `nvim .` and window 2 a shell. Sessions survive SSH disconnects and
+closing the terminal: `tmux attach`.
 
-## Cheatsheet
-
-Leader is `Space`. Press it and wait: which-key shows everything.
-
-### tmux (`prefix` = `Ctrl+a`)
-
-| Keys | Action |
-|---|---|
-| `prefix f` | jump to/create project session |
-| `prefix S` | new plain shell session (asks for a name) |
-| `prefix s` | list sessions |
-| `prefix c` / `prefix 1..9` | new window / go to window |
-| `prefix \|` / `prefix -` | split vertical / horizontal |
-| `Ctrl+h/j/k/l` | move between panes **and** nvim splits |
-| `prefix H/J/K/L` | resize pane |
-| `prefix z` | zoom pane |
-| `prefix g` | lazygit popup |
-| `prefix [` | scroll/copy mode (`v` select, `y` copy) |
-| `prefix d` | detach |
-| `prefix Ctrl+l` | clear shell (plain `Ctrl+l` navigates) |
-
-### Neovim
-
-| VS Code | Neovim |
-|---|---|
-| Ctrl+P (files) | `Space s f` |
-| Ctrl+Shift+F (grep) | `Space s g` (word under cursor: `Space s w`) |
-| Open tabs | `Space Space` (buffers) |
-| Recent files | `Space s .` |
-| Explorer | `\` (toggle neo-tree; `?` inside for help) |
-| F12 go to definition | `grd` (back: `Ctrl+o`) |
-| Shift+F12 references | `grr` |
-| Go to implementation | `gri` |
-| Hover docs | `K` |
-| F2 rename | `grn` |
-| Ctrl+. quick fix | `gra` |
-| Ctrl+Shift+O symbols | `gO` (workspace: `gW`) |
-| Problems panel | `Space s d`, next/prev `]d` / `[d` |
-| Format | `Space f` (auto on save: Go, Terraform, Lua) |
-| Completion | `Ctrl+n/p` select, `Ctrl+y` accept, `Ctrl+Space` open |
-| Source control | `Space g g` (lazygit), `Space g s` changed files |
-| GitLens blame | `Space h b` line, `Space g b` file, `Space t b` inline toggle |
-| Next/prev change | `]c` / `[c`; stage/reset hunk `Space h s` / `Space h r`; preview `Space h p` |
-| Command palette | `Space s c`; all keymaps `Space s k` |
+Daily usage and all key tables (tmux, Neovim, VS Code → Neovim): [QUICKSTART.md](QUICKSTART.md).
 
 ## Notes
 
@@ -99,5 +54,3 @@ Leader is `Space`. Press it and wait: which-key shows everything.
   Others: `# yaml-language-server: $schema=<url>` at the top.
 - **Clipboard over SSH**: yanks are sent to your local clipboard via OSC 52; paste from local
   with your terminal's paste key.
-- **Updating plugins**: `:lua vim.pack.update()` → review → `:w`. Commit `nvim/nvim-pack-lock.json`.
-- **Health check**: `:checkhealth`.
